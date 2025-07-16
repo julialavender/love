@@ -1,115 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>lavender.vu</title>
-  <link href="https://fonts.cdnfonts.com/css/press-start-2p" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>hi, i'm julia</title>
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    html, body {
       margin: 0;
-      background-color: black;
-      overflow-x: hidden;
+      background: radial-gradient(circle at center, #0b0c1c 0%, #000000 100%);
+      min-height: 200vh;
       font-family: 'Press Start 2P', monospace;
-      color: #fff;
+      color: #e8d8f7;
+      overflow-x: hidden;
     }
 
     .container {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-    }
-
-    .nyan {
-      width: 240px;
-      margin-bottom: 24px;
-      image-rendering: pixelated;
+      justify-content: start;
+      position: relative;
       z-index: 1;
-    }
-
-    h1 {
-      font-size: 18px;
-      text-shadow:
-        0 0 5px #b38aff,
-        0 0 10px #b38aff,
-        0 0 20px #d6b3ff,
-        0 0 30px #e6d6ff,
-        0 0 40px #d6b3ff;
-      animation: pulse 2.5s infinite ease-in-out;
-      margin-bottom: 12px;
-      z-index: 1;
-    }
-
-    .flag {
-      width: 48px;
-      image-rendering: pixelated;
-      z-index: 1;
-    }
-
-    .youtube-player {
-      margin-top: 50vh; /* antes era 100vh */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 0;
-    }
-
-    iframe {
-      width: 480px;
-      height: 270px;
-      border: none;
-      box-shadow: 0 0 20px #b38aff55;
+      padding-top: 180px;
     }
 
     .star {
       position: absolute;
       width: 2px;
       height: 2px;
-      background: white;
-      animation: twinkle 2s infinite ease-in-out alternate;
-      opacity: 0.8;
+      background: #00ffff;
+      animation: blink 1s infinite;
+      opacity: 0.5;
+      z-index: 0;
     }
 
-    @keyframes pulse {
-      0% { text-shadow: 0 0 5px #b38aff, 0 0 10px #b38aff, 0 0 20px #d6b3ff, 0 0 30px #e6d6ff, 0 0 40px #d6b3ff; }
-      50% { text-shadow: 0 0 10px #d6b3ff, 0 0 20px #d6b3ff, 0 0 30px #e6d6ff, 0 0 40px #ffffff, 0 0 50px #ffffff; }
-      100% { text-shadow: 0 0 5px #b38aff, 0 0 10px #b38aff, 0 0 20px #d6b3ff, 0 0 30px #e6d6ff, 0 0 40px #d6b3ff; }
+    @keyframes blink {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
     }
 
-    @keyframes twinkle {
-      from { opacity: 0.3; }
-      to { opacity: 1; }
+    #flower {
+      image-rendering: pixelated;
+      width: 80px;
+      margin: 20px 0;
+      cursor: pointer;
+    }
+
+    h1 {
+      margin: 10px 0 0 0;
+      font-size: 16px;
+      color: #e6d6fb;
+      text-shadow: 0 0 5px #e6d6fb, 0 0 15px #e6d6fb, 0 0 30px #e6d6fb, 0 0 50px #e6d6fb;
+    }
+
+    #flag {
+      width: 40px;
+      image-rendering: pixelated;
+      margin-bottom: 10px;
+    }
+
+    .dialogue-box {
+      width: 300px;
+      border: 4px solid white;
+      background: black;
+      color: white;
+      padding: 20px;
+      font-size: 10px;
+      margin-top: 20px;
+      min-height: 60px;
+      text-align: left;
+      white-space: pre-wrap;
+      display: none;
+      z-index: 2;
+    }
+
+    .music {
+      margin-top: 100vh;
+      padding: 100px 0;
+      background: linear-gradient(to bottom, transparent, #000000 100%);
+      display: flex;
+      justify-content: center;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img class="nyan" src="https://no-cdn.shortpixel.ai/client/to_avif,q_lossy,ret_wait/https://shortpixel.com/blog/wp-content/uploads/2023/12/nyan-cat.gif" alt="nyan cat"/>
+    <img id="flag" src="https://images.vexels.com/media/users/3/168453/isolated/preview/2b941d38993565f95b0a1d7ad9bd43a8-transgender-heart-stripe-pixel-flat.png" alt="trans flag heart">
     <h1>hi, i'm julia</h1>
-    <img class="flag" src="https://images.vexels.com/media/users/3/168453/isolated/preview/2b941d38993565f95b0a1d7ad9bd43a8-transgender-heart-stripe-pixel-flat.png" alt="trans pixel heart"/>
+    <img id="flower" src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png" alt="Echo Flower">
+    <div class="dialogue-box" id="dialogue"></div>
   </div>
 
-  <!-- música secreta da alma 🩵 -->
-  <div class="youtube-player">
-    <iframe
-      src="https://www.youtube.com/embed/s8b41FVy5bM?autoplay=1&mute=0&loop=1&playlist=s8b41FVy5bM"
-      title="music"
-      allow="autoplay"
-    ></iframe>
+<div style="margin-top: 100px; text-align: center;">
+  <a href="about.html" style="font-family: 'Press Start 2P', monospace; font-size: 10px; color: #46cef3; text-decoration: none;">
+    /about.html/
+  </a>
+  <div style="font-family: 'Press Start 2P', monospace; font-size: 10px; color: #326876; margin-top: 8px;">
+    /loves.html/ (in progress)
+  </div>
+</div>
+
+
+  <div class="music">
+    <iframe width="480" height="270" src="https://www.youtube.com/embed/TB4GkDOY4iI?si=V6cUBTzFSPClWCLv" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <script>
-    const numStars = 150;
+    // criar estrelas
+    const numStars = 100;
     for (let i = 0; i < numStars; i++) {
-      const star = document.createElement("div");
-      star.className = "star";
-      star.style.top = Math.random() * 100 + "vh";
-      star.style.left = Math.random() * 100 + "vw";
-      star.style.animationDuration = (1 + Math.random() * 2) + "s";
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random()}s`;
+      star.style.opacity = 0.2 + Math.random() * 0.8;
       document.body.appendChild(star);
     }
+
+    // frases
+    const frases = [
+  "you’re not too much. i promise.",
+  "you are allowed to rest.",
+  "i’m proud of you for surviving.",
+  "this world is better with you in it.",
+  "it’s okay to need time.",
+  "you are not a burden.",
+  "your softness is not a weakness.",
+  "even now, you are growing.",
+  "you’re allowed to be both strong and scared.",
+  "your feelings are real.",
+  "healing isn’t linear.",
+  "you’re still lovable on your worst days.",
+  "some things bloom later. so will you.",
+  "you are not falling behind.",
+  "please don’t give up.",
+  "your heart is not broken—just tender.",
+  "you’re doing better than you think.",
+  "you make the world gentler.",
+  "take a breath. you’re safe now.",
+  "your tears don’t make you weak.",
+  "small steps still count.",
+  "the sun misses you too.",
+  "you deserve peace, even if you don’t feel it yet.",
+  "your presence is a gift.",
+  "it’s okay to be different.",
+  "you’re more loved than you realize.",
+  "your voice matters.",
+  "you don’t have to fix everything.",
+  "rest is productive too.",
+  "it's okay to outgrow people.",
+  "you are not behind.",
+  "it’s okay if all you did today was exist.",
+  "your light is still here.",
+  "you are doing your best, and that is enough.",
+  "storms don’t last forever.",
+  "you’re not alone, even when it feels like it.",
+  "love will find you again.",
+  "you’re allowed to ask for help.",
+  "your sensitivity is beautiful.",
+  "i’m glad you’re here.",
+  "there’s still magic in you.",
+  "you are valid, even when no one says it.",
+  "you’re not broken.",
+  "it’s okay to cry.",
+  "your dreams matter.",
+  "it’s okay to not be okay.",
+  "i believe in your future.",
+  "one day you’ll feel joy again.",
+  "you’re allowed to feel everything.",
+  "your existence matters.",
+  "you’ve already survived so much.",
+  "the moon watches over you too.",
+  "there’s no shame in needing love.",
+  "your gentleness is strength.",
+  "i see you. i hear you.",
+  "you are not invisible.",
+  "it’s not too late.",
+  "you’ve come so far.",
+  "you are more than your pain.",
+  "you don’t need to earn love.",
+  "your soft heart is a superpower.",
+  "i hope today is kind to you.",
+  "it's okay to be human.",
+  "you don’t have to pretend.",
+  "just being here is enough.",
+  "the stars remember you.",
+  "someone out there is rooting for you.",
+  "your mind is not your enemy.",
+  "you are safe here.",
+  "you are not hopeless.",
+  "your kindness leaves echoes.",
+  "there’s beauty in your scars.",
+  "you’re not too late for your life.",
+  "one step at a time.",
+  "your story isn't over yet.",
+  "there’s still music left to hear.",
+  "you are not what they did to you.",
+  "even your silence says something beautiful.",
+  "it’s okay to begin again.",
+  "your heart beats like a lighthouse.",
+  "you are worthy of love, always.",
+  "you’re allowed to change.",
+  "your joy is revolutionary.",
+  "you are not your worst thoughts.",
+  "you are stardust and strength.",
+  "you belong, even when you don’t feel like it.",
+  "the sky is proud of you.",
+  "your softness creates space for others.",
+  "it’s okay to hope again.",
+  "you're not meant to be anyone else.",
+  "the universe hasn’t given up on you.",
+  "you are not alone in this feeling.",
+  "someone is grateful you exist.",
+  "you don’t need permission to rest.",
+  "you’re allowed to be seen.",
+  "you are here, and that means everything.",
+  "you can take up space.",
+  "your survival is a quiet miracle.",
+  "i’m glad you stayed.",
+  "you're loved, even now.",
+  "there’s softness even in the dark.",
+  "you are allowed to take up space.",
+  "your past doesn’t define your worth.",
+  "you are more than what hurts.",
+  "the quiet days matter too.",
+  "healing is messy, and that’s okay.",
+  "you’re doing so well, even if it doesn’t feel like it.",
+  "the world is softer because of you.",
+  "you are love in motion.",
+  "your heart knows the way.",
+  "it’s okay to need comfort.",
+  "your slowness is not failure.",
+  "you’re allowed to exist without performing.",
+  "you bring light just by being.",
+  "the universe holds space for you.",
+  "you are not forgotten.",
+  "every breath is a beginning.",
+  "you are allowed to rest without guilt.",
+  "even stars need darkness to shine.",
+  "your presence is healing.",
+  "you’re not too sensitive.",
+  "your softness is rebellion.",
+  "joy still belongs to you.",
+  "you matter, even when you’re quiet.",
+  "someone cares, even if you can’t see it.",
+  "the sun will rise for you again.",
+  "you’re not late to your own life.",
+  "you are sacred just as you are.",
+  "the void can’t swallow you whole.",
+  "you are not too broken to be loved.",
+  "stillness is survival too.",
+  "you don’t need to rush your healing.",
+  "you’re already enough.",
+  "you are allowed to want more.",
+  "your story is still being written.",
+  "you don’t have to explain your pain.",
+  "the gentle things count.",
+  "you are not too far gone.",
+  "the night will pass.",
+  "you are starlight in human form.",
+  "it’s okay to need reminders.",
+  "you are someone’s safe space.",
+  "your fear doesn’t cancel your strength.",
+  "you are magic.",
+  "the world hasn’t seen the best of you yet.",
+  "your love reaches farther than you know.",
+  "you’re allowed to dream again.",
+  "it’s okay to grow slowly.",
+  "your kindness is revolutionary.",
+  "you are the hope you’re looking for."
+];
+
+    const dialogue = document.getElementById("dialogue");
+    const flower = document.getElementById("flower");
+
+    function typeWriter(text, i = 0) {
+      if (i === 0) dialogue.textContent = "";
+      if (i < text.length) {
+        dialogue.textContent += text.charAt(i);
+        setTimeout(() => typeWriter(text, i + 1), 30);
+      }
+    }
+
+    flower.addEventListener("click", () => {
+      const random = frases[Math.floor(Math.random() * frases.length)];
+      dialogue.style.display = "block";
+      typeWriter(random);
+    });
   </script>
 </body>
 </html>

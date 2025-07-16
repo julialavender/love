@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>about</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    html, body {
+      margin: 0;
+      background: radial-gradient(circle at center, #0b0c1c 0%, #000000 100%);
+      min-height: 100vh;
+      font-family: 'Press Start 2P', monospace;
+      color: #e8d8f7;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 100px 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .text {
+      max-width: 700px;
+      font-size: 10px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      color: #e6c4ff;
+      text-shadow: 0 0 5px #e6c4ff, 0 0 12px #e6c4ff, 0 0 25px #e6c4ff;
+    }
+
+    .back-link {
+      margin-top: 40px;
+      font-size: 9px;
+      color: #46cef3;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: #bbb;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #00ffff;
+      animation: blink 1s infinite;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .nyan {
+      width: 160px;
+      margin-bottom: 30px;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="nyan" src="https://shortpixel.com/blog/wp-content/uploads/2023/12/nyan-cat.gif" alt="nyan cat">
+    <div class="text">
+      helloz, im julia, i guess you're in my page :3
+
+      my pronouns are she/they, i'm a 17yo girl from brazil and this page is more of a personal project, an idea that i had since i always wanted to have a cool page like a lot of people have, but i decided to make something more personal instead of a strawpage or carrd.
+
+      the echo flower in the main page has currently the total of 150 quotes that i chose, most are some hopecore quotes i choose to maybe brighten a little the day of whoever reads.
+
+      my discord is lavcore
+      if you want to talk about whatever, just hit me up there, i mostly accept everyone :p
+    </div>
+    <a class="back-link" href="index.html">back to main page</a>
+  </div>
+
+  <script>
+    const numStars = 100;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random()}s`;
+      star.style.opacity = 0.2 + Math.random() * 0.8;
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>
