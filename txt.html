@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>lavender.vu</title>
+  <link href="https://fonts.cdnfonts.com/css/press-start-2p" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow-x: hidden;
+      font-family: 'Press Start 2P', monospace;
+      color: #fff;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nyan {
+      width: 240px;
+      margin-bottom: 24px;
+      image-rendering: pixelated;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 18px;
+      text-shadow:
+        0 0 5px #b38aff,
+        0 0 10px #b38aff,
+        0 0 20px #d6b3ff,
+        0 0 30px #e6d6ff,
+        0 0 40px #d6b3ff;
+      animation: pulse 2.5s infinite ease-in-out;
+      margin-bottom: 12px;
+      z-index: 1;
+    }
+
+    .flag {
+      width: 48px;
+      image-rendering: pixelated;
+      z-index: 1;
+    }
+
+    .youtube-player {
+      margin-top: 50vh; /* antes era 100vh */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 0;
+    }
+
+    iframe {
+      width: 480px;
+      height: 270px;
+      border: none;
+      box-shadow: 0 0 20px #b38aff55;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: twinkle 2s infinite ease-in-out alternate;
+      opacity: 0.8;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px #b38aff, 0 0 10px #b38aff, 0 0 20px #d6b3ff, 0 0 30px #e6d6ff, 0 0 40px #d6b3ff; }
+      50% { text-shadow: 0 0 10px #d6b3ff, 0 0 20px #d6b3ff, 0 0 30px #e6d6ff, 0 0 40px #ffffff, 0 0 50px #ffffff; }
+      100% { text-shadow: 0 0 5px #b38aff, 0 0 10px #b38aff, 0 0 20px #d6b3ff, 0 0 30px #e6d6ff, 0 0 40px #d6b3ff; }
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="nyan" src="https://no-cdn.shortpixel.ai/client/to_avif,q_lossy,ret_wait/https://shortpixel.com/blog/wp-content/uploads/2023/12/nyan-cat.gif" alt="nyan cat"/>
+    <h1>hi, i'm julia</h1>
+    <img class="flag" src="https://images.vexels.com/media/users/3/168453/isolated/preview/2b941d38993565f95b0a1d7ad9bd43a8-transgender-heart-stripe-pixel-flat.png" alt="trans pixel heart"/>
+  </div>
+
+  <!-- música secreta da alma 🩵 -->
+  <div class="youtube-player">
+    <iframe
+      src="https://www.youtube.com/embed/s8b41FVy5bM?autoplay=1&mute=0&loop=1&playlist=s8b41FVy5bM"
+      title="music"
+      allow="autoplay"
+    ></iframe>
+  </div>
+
+  <script>
+    const numStars = 150;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.animationDuration = (1 + Math.random() * 2) + "s";
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>
