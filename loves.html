@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>loves</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    html, body {
+      margin: 0;
+      background: radial-gradient(circle at center, #0b0c1c 0%, #000000 100%);
+      font-family: 'Press Start 2P', monospace;
+      color: #e8d8f7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .intro-message {
+      text-align: center;
+      font-size: 10px;
+      color: #e8d8f7;
+      text-shadow: 0 0 5px #e8d8f7, 0 0 15px #e8d8f7, 0 0 30px #e8d8f7;
+      margin-top: 40px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .flower-block {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .flower-block img {
+      width: 60px;
+      image-rendering: pixelated;
+    }
+
+    .flower-block span {
+      font-size: 10px;
+      color: #e8d8f7;
+      text-shadow: 0 0 5px #e8d8f7, 0 0 15px #e8d8f7, 0 0 30px #e8d8f7;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #00ffff;
+      animation: blink 1s infinite;
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+
+    .dialogue-box {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) scale(1.1);
+      width: 330px;
+      border: 4px solid white;
+      background: black;
+      color: white;
+      padding: 24px;
+      font-size: 11px;
+      min-height: 60px;
+      text-align: left;
+      white-space: pre-wrap;
+      display: none;
+      z-index: 10;
+    }
+
+    .back-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 8px;
+      font-family: 'Press Start 2P', monospace;
+      color: #e8d8f7;
+      text-shadow: 0 0 5px #e8d8f7, 0 0 15px #e8d8f7;
+      text-decoration: underline;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-message">special thanks? a shoutout to each one of you who make life worth it, each one has a special place in my heart</div>
+  <div class="container">
+    <!-- Flowers here -->
+    <div class="flower-block" style="top: 10%; left: 10%;" data-name="jpingu"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>jpingu</span></div>
+    <div class="flower-block" style="top: 20%; left: 30%;" data-name="miwo"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>miwo</span></div>
+    <div class="flower-block" style="top: 15%; left: 55%;" data-name="sunsetzg3"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>sunsetzg3</span></div>
+    <div class="flower-block" style="top: 5%; left: 75%;" data-name="mango"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>mango</span></div>
+    <div class="flower-block" style="top: 25%; left: 15%;" data-name="karina"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>karina</span></div>
+    <div class="flower-block" style="top: 30%; left: 40%;" data-name="titan"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>titan</span></div>
+    <div class="flower-block" style="top: 30%; left: 70%;" data-name="vivian"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>vivian</span></div>
+    <div class="flower-block" style="top: 45%; left: 20%;" data-name="mint"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>mint</span></div>
+    <div class="flower-block" style="top: 40%; left: 50%;" data-name="wesberk"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>wesberk</span></div>
+    <div class="flower-block" style="top: 35%; left: 80%;" data-name="lucas"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>lucas</span></div>
+    <div class="flower-block" style="top: 55%; left: 10%;" data-name="taken"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>taken</span></div>
+    <div class="flower-block" style="top: 50%; left: 35%;" data-name="marcelo"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>marcelo</span></div>
+    <div class="flower-block" style="top: 55%; left: 60%;" data-name="bazalto"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>bazalto</span></div>
+    <div class="flower-block" style="top: 60%; left: 30%;" data-name="macedo"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>macedo</span></div>
+    <div class="flower-block" style="top: 60%; left: 85%;" data-name="karv"><img src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png"><span>karv</span></div>
+  </div>
+
+  <div class="dialogue-box" id="dialogue"></div>
+  <a href="index.html" class="back-button">back to main page</a>
+
+  <script>
+    const numStars = 100;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random()}s`;
+      star.style.opacity = 0.2 + Math.random() * 0.8;
+      document.body.appendChild(star);
+    }
+
+    const frases = {
+      jpingu: ["Cringe is dead y'all, do whatever you wanna do"],
+      miwo: ["someone somewhere cares about you meow"],
+      sunsetzg3: ["I'm the baconest ever"],
+      mango: ["I really like mangoes"],
+      karina: ["The horrors are never ending, yet i remain silly."],
+      titan: ["Even if it looks imposible, don't give up until the last shed of blood falls"],
+      vivian: ["Wait, PAC-MAN’s a bad guy?"],
+      mint: ["The quieter you become, the more you are able to hear."],
+      wesberk: ["It doesn't matter if you're gay, straight, or whatever, because at the end of the day, it's night <3"],
+      lucas: ["we stacking diamonds and blue hunneds all day. Can´t find anything other than a hundred in my stack"],
+      taken: ["love what you gotta love, suffer what you gotta suffer, live life as if it were your last day"],
+      marcelo: ["a still mind is the greatest peace"],
+      bazalto: ["the chochoro will be big"],
+      macedo: ["i love everyone (ones more than others btw)"],
+      karv: ["The boy on the blue moon dreams of sun"],
+    };
+
+    const dialogue = document.getElementById('dialogue');
+    const flowers = document.querySelectorAll('.flower-block');
+    let typingTimeout;
+
+    function typeWriter(text, i = 0) {
+      clearTimeout(typingTimeout);
+      if (i === 0) dialogue.textContent = '* ';
+      if (i < text.length) {
+        dialogue.textContent += text.charAt(i);
+        typingTimeout = setTimeout(() => typeWriter(text, i + 1), 30);
+      }
+    }
+
+    flowers.forEach(flower => {
+      flower.addEventListener('click', () => {
+        const name = flower.getAttribute('data-name');
+        const options = frases[name];
+        const random = options[Math.floor(Math.random() * options.length)];
+        dialogue.style.display = 'block';
+        typeWriter(random);
+      });
+    });
+  </script>
+</body>
+</html>

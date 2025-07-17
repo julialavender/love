@@ -11,7 +11,7 @@
       background: radial-gradient(circle at center, #0b0c1c 0%, #000000 100%);
       min-height: 200vh;
       font-family: 'Press Start 2P', monospace;
-      color: #e8d8f7;
+      color: #fcddff;
       overflow-x: hidden;
     }
 
@@ -20,10 +20,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: start;
+      justify-content: flex-start;
       position: relative;
       z-index: 1;
-      padding-top: 180px;
+      padding-top: 140px;
     }
 
     .star {
@@ -45,15 +45,15 @@
     #flower {
       image-rendering: pixelated;
       width: 80px;
-      margin: 20px 0;
       cursor: pointer;
+      margin-top: 20px;
     }
 
     h1 {
-      margin: 10px 0 0 0;
+      margin: 10px 0 -5px 0;
       font-size: 16px;
-      color: #e6d6fb;
-      text-shadow: 0 0 5px #e6d6fb, 0 0 15px #e6d6fb, 0 0 30px #e6d6fb, 0 0 50px #e6d6fb;
+      color: #f6ecff;
+      text-shadow: 0 0 5px #f1e8ff, 0 0 15px #f1e8ff, 0 0 30px #f1e8ff, 0 0 50px #f1e8ff;
     }
 
     #flag {
@@ -62,19 +62,30 @@
       margin-bottom: 10px;
     }
 
+    .intro-text {
+      font-size: 8px;
+      margin-bottom: 10px;
+      color: #232351;
+      position: absolute;
+      top: 10px;
+    }
+
     .dialogue-box {
-      width: 300px;
+      transform: scale(1.1);
+      transform-origin: top center;
+      width: 330px;
       border: 4px solid white;
       background: black;
       color: white;
-      padding: 20px;
-      font-size: 10px;
+      padding: 24px;
+      font-size: 11px;
       margin-top: 20px;
       min-height: 60px;
       text-align: left;
       white-space: pre-wrap;
       display: none;
       z-index: 2;
+      position: relative;
     }
 
     .music {
@@ -88,19 +99,18 @@
 </head>
 <body>
   <div class="container">
-    <img id="flag" src="https://images.vexels.com/media/users/3/168453/isolated/preview/2b941d38993565f95b0a1d7ad9bd43a8-transgender-heart-stripe-pixel-flat.png" alt="trans flag heart">
-    <h1>hi, i'm julia</h1>
+    <div class="intro-text">the echo flower may have a message for you</div>
+    <img id="flag" src="https://images.vexels.com/media/users/3/168453/isolated/preview/2b941d38993565f95b0a1d7ad9bd43a8-transgender-heart-stripe-pixel-flat.png" alt="trans flag heart" style="margin-top: 60px; margin-bottom: -20px;">
+    <h1 style="margin-top: 60px;">hi, i'm julia</h1>
     <img id="flower" src="https://64.media.tumblr.com/6cb0055521af39a057bbd49c9ebad62f/tumblr_inline_oq3sacQ0J31r4q36m_250.png" alt="Echo Flower">
     <div class="dialogue-box" id="dialogue"></div>
   </div>
 
-<div style="margin-top: 100px; text-align: center;">
-  <a href="about.html" style="font-family: 'Press Start 2P', monospace; font-size: 10px; color: #46cef3; text-decoration: none;">
-    /about.html/
-  </a>
-  <div style="font-family: 'Press Start 2P', monospace; font-size: 10px; color: #326876; margin-top: 8px;">
-    /loves.html/ (in progress)
-  </div>
+  <div style="margin-top: 100px; text-align: center;">
+    <a href="about.html" style="font-family: 'Press Start 2P', monospace; color: #e8d8f7; font-size: 8px; text-shadow: 0 0 5px #e8d8f7, 0 0 15px #e8d8f7;">/about.html/</a>
+    </a>
+    <div style="text-align: center; margin-top: 20px;">
+  <a href="loves.html" style="font-family: 'Press Start 2P', monospace; color: #e8d8f7; font-size: 8px; text-shadow: 0 0 5px #e8d8f7, 0 0 15px #e8d8f7;">/loves.html/</a>
 </div>
 
 
@@ -278,13 +288,19 @@
     const dialogue = document.getElementById("dialogue");
     const flower = document.getElementById("flower");
 
-    function typeWriter(text, i = 0) {
-      if (i === 0) dialogue.textContent = "";
-      if (i < text.length) {
-        dialogue.textContent += text.charAt(i);
-        setTimeout(() => typeWriter(text, i + 1), 30);
-      }
-    }
+    let typingTimeout;
+
+function typeWriter(text, i = 0) {
+  if (i === 0) {
+    clearTimeout(typingTimeout);
+    dialogue.textContent = "* ";
+  }
+  if (i < text.length) {
+    dialogue.textContent += text.charAt(i);
+    typingTimeout = setTimeout(() => typeWriter(text, i + 1), 30);
+  }
+}
+
 
     flower.addEventListener("click", () => {
       const random = frases[Math.floor(Math.random() * frases.length)];
